@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Input.css";
 import { useDispatch } from "react-redux";
 import { saveTodo } from "../features/todoSlice";
+import { Button, TextField } from "@material-ui/core";
 
 export default function Input() {
   const [input, setInput] = useState("");
@@ -21,12 +22,18 @@ export default function Input() {
   };
   return (
     <div className="input">
-      <input
-        type="text"
+      <TextField
+        id="input"
+        label="Task"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        autoComplete="off"
       />
-      <button onClick={addTodo}>Add</button>
+      <div>
+        <Button variant="contained" color="primary" onClick={addTodo}>
+          Add!
+        </Button>
+      </div>
     </div>
   );
 }
